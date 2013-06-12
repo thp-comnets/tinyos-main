@@ -28,6 +28,4 @@ PFLAGS += -DBLIP_DERIVE_SHORTADDRS
 # tell the 6lowpan layer to not generate hc-compressed headers
 #PFLAGS += -DLIB6LOWPAN_HC_VERSION=-1
 
-# additional ICMP payload size (4 byte are added by default for timestamp)
-PFLAGS += -DICMP_ADD_PAYLOAD=249
 include $(MAKERULES)

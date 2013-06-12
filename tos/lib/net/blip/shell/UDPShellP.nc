@@ -182,7 +182,7 @@ module UDPShellP {
 
     if (argc < 2) return;
         inet_pton6(argv[1], &dest);
-	call ICMPPing.ping(&dest, 1024, atoi(argv[2]));
+	call ICMPPing.ping(&dest, 1024, atoi(argv[2]), atoi(argv[3]));
   }
 
 
