@@ -25,4 +25,6 @@ PFLAGS += -DIN6_PREFIX=\"fec0::\"
 # derive short address from the dhcp address assignment, if possible
 PFLAGS += -DBLIP_DERIVE_SHORTADDRS
 
+# tell the 6lowpan layer to not generate hc-compressed headers
+#PFLAGS += -DLIB6LOWPAN_HC_VERSION=-1
 include $(MAKERULES)
