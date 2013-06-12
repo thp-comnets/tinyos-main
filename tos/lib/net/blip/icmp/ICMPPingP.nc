@@ -40,13 +40,18 @@ module ICMPPingP {
   }
 } implementation {
 
+#ifndef ICMP_ADD_PAYLOAD
+#define ICMP_ADD_PAYLOAD 0
+#endif
+
   uint16_t ping_seq, ping_n, ping_rcv, ping_ident;
   struct in6_addr ping_dest;
 
   void sendPing(struct in6_addr *dest, uint16_t seqno) {
     struct ip6_packet *ipmsg = (struct ip6_packet *)ip_malloc(sizeof(struct ip6_packet) + 
                                                               sizeof(icmp_echo_hdr_t) + 
-                                                              sizeof(nx_uint32_t));
+                                                              sizeof(nx_uint32_t) +
+							      ICMP_ADD_PAYLOAD);
     icmp_echo_hdr_t *e_hdr = (icmp_echo_hdr_t *)(ipmsg + 1);
     nx_uint32_t *sendTime = (nx_uint32_t *)(e_hdr + 1);
     struct ip_iovec v;
@@ -55,7 +60,7 @@ module ICMPPingP {
 
     // iovec
     v.iov_base = (void *)(ipmsg + 1);
-    v.iov_len = sizeof(icmp_echo_hdr_t) + sizeof(nx_uint32_t);
+    v.iov_len = sizeof(icmp_echo_hdr_t) + sizeof(nx_uint32_t) + ICMP_ADD_PAYLOAD;
     v.iov_next = NULL;
     ipmsg->ip6_data = &v;
 
