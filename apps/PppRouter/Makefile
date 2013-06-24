@@ -4,6 +4,9 @@ COMPONENT=PppRouterC
 
 #DEFAULT_LOCAL_GROUP = 0xCA
 
+#Set default local group
+#DEFAULT_LOCAL_GROUP=0xab
+
 # use rpl
 PFLAGS += -DRPL_ROUTING -DRPL_STORING_MODE -I$(LOWPAN_ROOT)/tos/lib/net/rpl
 # PFLAGS += -DRPL_OF_MRHOF
@@ -23,7 +26,7 @@ PFLAGS += -DIN6_PREFIX=\"fec0::\"
 #PFLAGS += -DIN6_PREFIX=\"2a01:c911:0:212d::\"
 
 # derive short address from the dhcp address assignment, if possible
-PFLAGS += -DBLIP_DERIVE_SHORTADDRS
+#PFLAGS += -DBLIP_DERIVE_SHORTADDRS
 
 # tell the 6lowpan layer to not generate hc-compressed headers
 #PFLAGS += -DLIB6LOWPAN_HC_VERSION=-1

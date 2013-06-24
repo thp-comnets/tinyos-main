@@ -2,6 +2,9 @@ COMPONENT=UDPEchoC
 # uncomment this for network programming support
 # BOOTLOADER=tosboot
 
+#Set default local group
+#DEFAULT_LOCAL_GROUP=0xab
+
 # radio options
 # CFLAGS += -DCC2420_DEF_CHANNEL=26
 # CFLAGS += -DRF230_DEF_CHANNEL=26
@@ -16,7 +19,7 @@ PFLAGS += -DRPL_ROUTING -DRPL_STORING_MODE -I$(TOSDIR)/lib/net/rpl
 # PFLAGS += -DRPL_OF_MRHOF 
 
 # tell the 6lowpan layer to not generate hc-compressed headers
-# PFLAGS += -DLIB6LOWPAN_HC_VERSION=-1
+PFLAGS += -DLIB6LOWPAN_HC_VERSION=-1
 
 # if this is set, motes will send debugging information to the address
 # listed.  BLIP_STATS causes blip to record statistics.
@@ -29,7 +32,7 @@ PFLAGS += -DRPL_ROUTING -DRPL_STORING_MODE -I$(TOSDIR)/lib/net/rpl
 # will only use EUI64-based link addresses.  If not using DHCP, this
 # causes blip to use TOS_NODE_ID as short address.  Otherwise the
 # EUI will be used in either case.
-PFLAGS += -DBLIP_DERIVE_SHORTADDRS
+#PFLAGS += -DBLIP_DERIVE_SHORTADDRS
 
 # this disables dhcp and statically chooses a prefix.  the motes form
 # their ipv6 address by combining this with TOS_NODE_ID
